@@ -1,0 +1,22 @@
+package components
+
+import "strconv"
+
+templ Navbar(open bool, groups []NavbarGroupData) {
+	<aside class="w-fit h-full dark:bg-gray-800 dark:text-slate-100">
+		<ul>
+			for _, group := range groups {
+				@NavbarGroup(group)
+			}
+		</ul>
+		<div>
+			<button hx-post={ "/navbar/toggle?open=" + strconv.FormatBool(open) }>
+				if open {
+					<i class="icon-chevron-left"></i>
+				} else {
+					<i class="icon-chevron-right"></i>
+				}
+			</button>
+		</div>
+	</aside>
+}

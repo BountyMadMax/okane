@@ -1,0 +1,30 @@
+package user
+
+import "github.com/BountyMadMax/okane/src/database/models"
+
+templ Form(user *models.User) {
+	<form>
+		<div class="flex">
+			<div>
+				<h1 class="text-xl font-bold">New User</h1>
+			</div>
+			<div>
+				<button class="dark:bg-red-800 dark:text-slate-100 rounded px-2 py-1 cursor-pointer">Delete</button>
+				<button class="dark:bg-orange-700 dark:text-slate-100 rounded px-2 py-1 cursor-pointer">Discard</button>
+				<button class="dark:bg-green-800 dark:text-slate-100 rounded px-2 py-1 cursor-pointer">Save</button>
+			</div>
+		</div>
+		<div>
+			<ul>
+				<li>Base</li>
+				<li>Additional</li>
+			</ul>
+			<div>
+				Base tab
+			</div>
+			<div>
+				Additional tab
+			</div>
+		</div>
+	</form>
+}
