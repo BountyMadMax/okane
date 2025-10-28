@@ -2,8 +2,23 @@ package components
 
 import "strconv"
 
+type NavbarGroupData struct {
+	Label string
+	Href  string
+	Id    string
+	Icon  string
+	Open  bool
+	Items []NavbarGroupItemData
+}
+
+type NavbarGroupItemData struct {
+	Label string
+	Href  string
+	Icon  string
+}
+
 templ Navbar(open bool, groups []NavbarGroupData) {
-	<aside class="w-fit h-full dark:bg-gray-800 dark:text-slate-100">
+	<aside class="w-fit h-full text-surface-50 bg-surface-900">
 		<ul>
 			for _, group := range groups {
 				@NavbarGroup(group)
@@ -19,4 +34,48 @@ templ Navbar(open bool, groups []NavbarGroupData) {
 			</button>
 		</div>
 	</aside>
+}
+
+templ NavbarGroup(group NavbarGroupData) {
+	<li>
+		<div class="flex">
+			if group.Href != "" {
+				<a href={ group.Href } class="p-2 w-full cursor-pointer">
+					<i class={ group.Icon }></i>
+					<span>
+						{ group.Label }
+					</span>
+				</a>
+				<button hx-post={ "/navbar-group/toggle?id=" + group.Id } class="p-2 flex justify-center items-center w-fit cursor-pointer">
+					if group.Open {
+						<i class="icon-chevron-down"></i>
+					} else {
+						<i class="icon-chevron-right"></i>
+					}
+				</button>
+			} else {
+				<button hx-post={ "/navbar-group/toggle?id=" + group.Id }>
+					<i class={ group.Icon }></i>
+					<span>{ group.Label }</span>
+					if group.Open {
+						<i class="icon-chevron-down"></i>
+					} else {
+						<i class="icon-chevron-right"></i>
+					}
+				</button>
+			}
+			if group.Open {
+				<ul>
+					for _, item := range group.Items {
+						<li>
+							<a href={ item.Href }>
+								<i class={ item.Icon }></i>
+								<span>{ item.Label }</span>
+							</a>
+						</li>
+					}
+				</ul>
+			}
+		</div>
+	</li>
 }
