@@ -7,21 +7,82 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-800: oklch(44.4% 0.177 26.899);
-    --color-orange-700: oklch(55.3% 0.195 38.402);
-    --color-green-800: oklch(44.8% 0.119 151.328);
-    --color-slate-50: oklch(98.4% 0.003 247.858);
-    --color-slate-100: oklch(96.8% 0.007 247.896);
-    --color-slate-900: oklch(20.8% 0.042 265.755);
-    --color-gray-700: oklch(37.3% 0.034 259.733);
-    --color-gray-800: oklch(27.8% 0.033 256.848);
-    --color-gray-900: oklch(21% 0.034 264.665);
     --spacing: 0.25rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-lg: 1.125rem;
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
     --font-weight-bold: 700;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-primary-50: var(--color-primary-50);
+    --color-primary-100: var(--color-primary-100);
+    --color-primary-200: var(--color-primary-200);
+    --color-primary-300: var(--color-primary-300);
+    --color-primary-400: var(--color-primary-400);
+    --color-primary-500: var(--color-primary-500);
+    --color-primary-600: var(--color-primary-600);
+    --color-primary-700: var(--color-primary-700);
+    --color-primary-800: var(--color-primary-800);
+    --color-primary-900: var(--color-primary-900);
+    --color-primary-950: var(--color-primary-950);
+    --color-secondary-50: var(--color-secondary-50);
+    --color-secondary-100: var(--color-secondary-100);
+    --color-secondary-200: var(--color-secondary-200);
+    --color-secondary-300: var(--color-secondary-300);
+    --color-secondary-400: var(--color-secondary-400);
+    --color-secondary-500: var(--color-secondary-500);
+    --color-secondary-600: var(--color-secondary-600);
+    --color-secondary-700: var(--color-secondary-700);
+    --color-secondary-800: var(--color-secondary-800);
+    --color-secondary-900: var(--color-secondary-900);
+    --color-secondary-950: var(--color-secondary-950);
+    --color-success-50: var(--color-success-50);
+    --color-success-100: var(--color-success-100);
+    --color-success-200: var(--color-success-200);
+    --color-success-300: var(--color-success-300);
+    --color-success-400: var(--color-success-400);
+    --color-success-500: var(--color-success-500);
+    --color-success-600: var(--color-success-600);
+    --color-success-700: var(--color-success-700);
+    --color-success-800: var(--color-success-800);
+    --color-success-900: var(--color-success-900);
+    --color-success-950: var(--color-success-950);
+    --color-warning-50: var(--color-warning-50);
+    --color-warning-100: var(--color-warning-100);
+    --color-warning-200: var(--color-warning-200);
+    --color-warning-300: var(--color-warning-300);
+    --color-warning-400: var(--color-warning-400);
+    --color-warning-500: var(--color-warning-500);
+    --color-warning-600: var(--color-warning-600);
+    --color-warning-700: var(--color-warning-700);
+    --color-warning-800: var(--color-warning-800);
+    --color-warning-900: var(--color-warning-900);
+    --color-warning-950: var(--color-warning-950);
+    --color-error-50: var(--color-error-50);
+    --color-error-100: var(--color-error-100);
+    --color-error-200: var(--color-error-200);
+    --color-error-300: var(--color-error-300);
+    --color-error-400: var(--color-error-400);
+    --color-error-500: var(--color-error-500);
+    --color-error-600: var(--color-error-600);
+    --color-error-700: var(--color-error-700);
+    --color-error-800: var(--color-error-800);
+    --color-error-900: var(--color-error-900);
+    --color-error-950: var(--color-error-950);
+    --color-surface-50: var(--color-surface-50);
+    --color-surface-100: var(--color-surface-100);
+    --color-surface-200: var(--color-surface-200);
+    --color-surface-300: var(--color-surface-300);
+    --color-surface-400: var(--color-surface-400);
+    --color-surface-500: var(--color-surface-500);
+    --color-surface-600: var(--color-surface-600);
+    --color-surface-700: var(--color-surface-700);
+    --color-surface-800: var(--color-surface-800);
+    --color-surface-900: var(--color-surface-900);
+    --color-surface-950: var(--color-surface-950);
   }
 }
 @layer base {
@@ -179,6 +240,9 @@
   .grid {
     display: grid;
   }
+  .table {
+    display: table;
+  }
   .h-dvh {
     height: 100dvh;
   }
@@ -191,8 +255,14 @@
   .w-full {
     width: 100%;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   .cursor-pointer {
     cursor: pointer;
+  }
+  .resize {
+    resize: both;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -200,8 +270,33 @@
   .grid-rows-\[4rem_1fr\] {
     grid-template-rows: 4rem 1fr;
   }
+  .items-center {
+    align-items: center;
+  }
+  .justify-center {
+    justify-content: center;
+  }
   .rounded {
     border-radius: 0.25rem;
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .bg-surface-800 {
+    background-color: var(--color-surface-800);
+  }
+  .bg-surface-900 {
+    background-color: var(--color-surface-900);
+  }
+  .bg-surface-950 {
+    background-color: var(--color-surface-950);
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
@@ -217,50 +312,125 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
-  .dark\:bg-gray-700 {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-gray-700);
-    }
+  .text-surface-50 {
+    color: var(--color-surface-50);
   }
-  .dark\:bg-gray-800 {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-gray-800);
-    }
+  .underline {
+    text-decoration-line: underline;
   }
-  .dark\:bg-gray-900 {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-gray-900);
-    }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
-  .dark\:bg-green-800 {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-green-800);
-    }
+}
+@layer base {
+  h1 {
+    font-size: var(--text-2xl);
   }
-  .dark\:bg-orange-700 {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-orange-700);
-    }
+  h2 {
+    font-size: var(--text-xl);
   }
-  .dark\:bg-red-800 {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-red-800);
-    }
+  h3 {
+    font-size: var(--text-lg);
   }
-  .dark\:text-slate-100 {
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-slate-100);
-    }
+  h4 {
+    font-size: var(--text-md);
   }
+  h5 {
+    font-size: var(--text-sm);
+  }
+  h6 {
+    font-size: var(--text-xs);
+  }
+}
+[data-theme='nightmarket'] {
+  --color-primary-50: #ffebc5;
+  --color-primary-100: #fce6b1;
+  --color-primary-200: #f9e19d;
+  --color-primary-300: #f7db88;
+  --color-primary-400: #f4d674;
+  --color-primary-500: #f1d160;
+  --color-primary-600: #e6bc4f;
+  --color-primary-700: #dca83d;
+  --color-primary-800: #d1932c;
+  --color-primary-900: #c77f1a;
+  --color-primary-950: #bc6a09;
+  --color-secondary-50: #f2ccf2;
+  --color-secondary-100: #e9bfe9;
+  --color-secondary-200: #e0b1e1;
+  --color-secondary-300: #d8a4d8;
+  --color-secondary-400: #cf96d0;
+  --color-secondary-500: #c689c7;
+  --color-secondary-600: #a56eab;
+  --color-secondary-700: #84538e;
+  --color-secondary-800: #633972;
+  --color-secondary-900: #421e55;
+  --color-secondary-950: #210339;
+  --color-success-50: #c6ffe1;
+  --color-success-100: #a7e1c2;
+  --color-success-200: #87c3a4;
+  --color-success-300: #68a685;
+  --color-success-400: #488867;
+  --color-success-500: #296a48;
+  --color-success-600: #215e3e;
+  --color-success-700: #195234;
+  --color-success-800: #12452b;
+  --color-success-900: #0a3921;
+  --color-success-950: #022d17;
+  --color-warning-50: #fccfa4;
+  --color-warning-100: #fcc28c;
+  --color-warning-200: #fcb674;
+  --color-warning-300: #fca95d;
+  --color-warning-400: #fc9d45;
+  --color-warning-500: #fc902d;
+  --color-warning-600: #e07a24;
+  --color-warning-700: #c3641b;
+  --color-warning-800: #a74d12;
+  --color-warning-900: #8a3709;
+  --color-warning-950: #6e2100;
+  --color-error-50: #ffd3d1;
+  --color-error-100: #f8bdba;
+  --color-error-200: #f0a7a3;
+  --color-error-300: #e9918d;
+  --color-error-400: #e17b76;
+  --color-error-500: #da655f;
+  --color-error-600: #d1564f;
+  --color-error-700: #c8463f;
+  --color-error-800: #bf3730;
+  --color-error-900: #b62720;
+  --color-error-950: #ad1810;
+  --color-surface-50: #e8e8fd;
+  --color-surface-100: #bfbfd4;
+  --color-surface-200: #9595ac;
+  --color-surface-300: #6c6c83;
+  --color-surface-400: #42425b;
+  --color-surface-500: #191932;
+  --color-surface-600: #15152d;
+  --color-surface-700: #111128;
+  --color-surface-800: #0c0c23;
+  --color-surface-900: #08081e;
+  --color-surface-950: #040419;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-font-weight: initial;
+      --tw-outline-style: solid;
     }
   }
 }
