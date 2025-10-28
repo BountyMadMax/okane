@@ -8,6 +8,10 @@
 
 `air`
 
+or
+
+`templ generate --watch --proxy="http://localhost:8080" --cmd="go run ."`
+
 ### Run templ (templates)
 
 `templ generate --watch`
