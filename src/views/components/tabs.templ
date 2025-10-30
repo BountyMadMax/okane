@@ -1,0 +1,50 @@
+package components
+
+type TabData struct {
+	Id      string
+	Header  templ.Component
+	Content templ.Component
+}
+
+templ TabHeader(label string) {
+	<span>{ label }</span>
+}
+
+func buildDataStringFromTabs(tabs []TabData) string {
+	dataString := ""
+
+	for _, tab := range tabs {
+		dataString += tab.Id + ": false,"
+	}
+
+	return dataString
+}
+
+templ Tabs(tabs []TabData) {
+	<div x-data={ buildDataStringFromTabs(tabs) }>
+		<ul class="flex gap-2">
+			for _, tab := range tabs {
+				<li x-on:click={ tab.Id + " = ! " + tab.Id } class="cursor-pointer px-2 py-1 bg-surface-500 rounded-t">
+					@tab.Header
+				</li>
+			}
+		</ul>
+		for _, tab := range tabs {
+			<div x-show={ tab.Id }>
+				@tab.Content
+			</div>
+		}
+	</div>
+}
+
+templ Form() {
+	@Tabs([]TabData{
+		{"contacts", TabHeader("Contacts"), BaseTab("Contacts content")},
+		{"contracts", TabHeader("Contracts"), BaseTab("Contracts content")},
+		{"others", TabHeader("Others"), BaseTab("Other content")},
+	})
+}
+
+templ BaseTab(content string) {
+	<p>{ content }</p>
+}

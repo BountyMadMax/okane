@@ -8,7 +8,10 @@ package user
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "github.com/BountyMadMax/okane/src/database/models"
+import (
+	"github.com/BountyMadMax/okane/src/database/models"
+	"github.com/BountyMadMax/okane/src/views/components"
+)
 
 func Form(user *models.User) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -31,7 +34,15 @@ func Form(user *models.User) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<form><div class=\"flex\"><div><h1 class=\"text-xl font-bold\">New User</h1></div><div><button class=\"dark:bg-red-800 dark:text-slate-100 rounded px-2 py-1 cursor-pointer\">Delete</button> <button class=\"dark:bg-orange-700 dark:text-slate-100 rounded px-2 py-1 cursor-pointer\">Discard</button> <button class=\"dark:bg-green-800 dark:text-slate-100 rounded px-2 py-1 cursor-pointer\">Save</button></div></div><div><ul><li>Base</li><li>Additional</li></ul><div>Base tab</div><div>Additional tab</div></div></form>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<form><div class=\"flex\"><div><h1 class=\"text-xl font-bold\">New User</h1></div><div><button class=\"dark:bg-red-800 dark:text-slate-100 rounded px-2 py-1 cursor-pointer\">Delete</button> <button class=\"dark:bg-orange-700 dark:text-slate-100 rounded px-2 py-1 cursor-pointer\">Discard</button> <button class=\"dark:bg-green-800 dark:text-slate-100 rounded px-2 py-1 cursor-pointer\">Save</button></div></div><div><ul><li>Base</li><li>Additional</li></ul><div>Base tab</div><div>Additional tab</div></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = components.Form().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</form>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

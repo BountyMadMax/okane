@@ -1,9 +1,13 @@
 package models
 
-// Holds config of an user.
+import (
+	"gorm.io/gorm"
+)
+
+// Holds the config of a User.
 type UserConfig struct {
-	Key    string `gorm:"primaryKey"`
-	Value  string
+	gorm.Model
 	UserID uint
 	User   User
+	Theme  string `json:"theme"`
 }

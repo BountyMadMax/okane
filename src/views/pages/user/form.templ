@@ -1,6 +1,9 @@
 package user
 
-import "github.com/BountyMadMax/okane/src/database/models"
+import (
+	"github.com/BountyMadMax/okane/src/database/models"
+	"github.com/BountyMadMax/okane/src/views/components"
+)
 
 templ Form(user *models.User) {
 	<form>
@@ -26,5 +29,6 @@ templ Form(user *models.User) {
 				Additional tab
 			</div>
 		</div>
+		@components.Form()
 	</form>
 }
