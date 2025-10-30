@@ -22,6 +22,9 @@ func addStaticFiles(e *echo.Echo) {
 
 	e.File("assets/js/htmx.min.js", "node_modules/htmx.org/dist/htmx.min.js")
 	e.File("assets/js/alpinejs.min.js", "node_modules/alpinejs/dist/cdn.min.js")
+	e.File("assets/js/alpinejs.collapse.min.js", "node_modules/@alpinejs/collapse/dist/cdn.min.js")
+	e.File("assets/js/alpinejs.sort.min.js", "node_modules/@alpinejs/sort/dist/cdn.min.js")
+
 	e.File("assets/css/inter.css", "node_modules/@fontsource-variable/inter/index.css")
 	e.Static("assets/font/inter/", "node_modules/@fontsource-variable/inter/files/")
 	e.Static("assets/icons/", "node_modules/lucide-static/font/")
