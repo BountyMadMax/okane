@@ -1,0 +1,9 @@
+package components
+
+import "github.com/BountyMadMax/okane/src/lib"
+
+templ Icon(icon string, attrs templ.Attributes) {
+	<i { attrs... }>
+		@templ.Raw(lib.ReadIcon(icon))
+	</i>
+}
