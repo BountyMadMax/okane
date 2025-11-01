@@ -3,7 +3,20 @@ package views
 import "github.com/BountyMadMax/okane/src/views/components"
 
 var navbar_groups = []components.NavbarGroupData{
-	{"Contacts", "/contacts", "contacts", "icon-contacts", false, []components.NavbarGroupItemData{}},
+	{
+		"Contacts",
+		"/contacts",
+		"contacts",
+		"icon-contacts",
+		false,
+		[]components.NavbarGroupItemData{
+			{
+				"My contacts",
+				"/my-contacts",
+				"contacts",
+			},
+		},
+	},
 	{"Contracts", "/contracts", "contracts", "icon-contracts", false, []components.NavbarGroupItemData{}},
 }
 
@@ -20,7 +33,6 @@ templ Layout() {
 			<script defer src="/assets/js/alpinejs.min.js"></script>
 			<link rel="stylesheet" href="/assets/css/main.css"/>
 			<link rel="stylesheet" href="/assets/css/inter.css"/>
-			<link rel="stylesheet" href="/assets/icons/lucide.css"/>
 		</head>
 		<body class="grid h-dvh grid-cols-1 grid-rows-[4rem_1fr] text-surface-50 bg-surface-950">
 			<header class="text-surface-50 bg-surface-800">

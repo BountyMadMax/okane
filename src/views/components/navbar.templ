@@ -27,9 +27,9 @@ templ Navbar(open bool, groups []NavbarGroupData) {
 		<div>
 			<button hx-post={ "/navbar/toggle?open=" + strconv.FormatBool(open) }>
 				if open {
-					<i class="icon-chevron-left"></i>
+					@Icon("chevron-left", nil)
 				} else {
-					<i class="icon-chevron-right"></i>
+					@Icon("chevron-right", nil)
 				}
 			</button>
 		</div>
@@ -37,45 +37,46 @@ templ Navbar(open bool, groups []NavbarGroupData) {
 }
 
 templ NavbarGroup(group NavbarGroupData) {
-	<li>
-		<div class="flex">
-			if group.Href != "" {
-				<a href={ group.Href } class="p-2 w-full cursor-pointer">
-					<i class={ group.Icon }></i>
-					<span>
-						{ group.Label }
-					</span>
-				</a>
-				<button hx-post={ "/navbar-group/toggle?id=" + group.Id } class="p-2 flex justify-center items-center w-fit cursor-pointer">
-					if group.Open {
-						<i class="icon-chevron-down"></i>
-					} else {
-						<i class="icon-chevron-right"></i>
-					}
-				</button>
-			} else {
-				<button hx-post={ "/navbar-group/toggle?id=" + group.Id }>
-					<i class={ group.Icon }></i>
-					<span>{ group.Label }</span>
-					if group.Open {
-						<i class="icon-chevron-down"></i>
-					} else {
-						<i class="icon-chevron-right"></i>
-					}
-				</button>
-			}
-			if group.Open {
-				<ul>
-					for _, item := range group.Items {
-						<li>
-							<a href={ item.Href }>
-								<i class={ item.Icon }></i>
-								<span>{ item.Label }</span>
-							</a>
-						</li>
-					}
-				</ul>
-			}
+	<li x-data={ "{ open: " + strconv.FormatBool(group.Open) + " }" }>
+		<div class="grid">
+			<div class="flex">
+				if group.Href != "" {
+					<a href={ group.Href } class="p-2 w-full cursor-pointer">
+						@Icon(group.Icon, nil)
+						<span>
+							{ group.Label }
+						</span>
+					</a>
+					<button hx-post={ "/navbar-group/toggle?id=" + group.Id } @click="open = ! open" class="p-2 flex justify-center items-center w-fit cursor-pointer">
+						if group.Open {
+							@Icon("chevron-down", nil)
+						} else {
+							@Icon("chevron-right", nil)
+							// @Icon("chevron-right", templ.Attributes{":class": "open ? '' : 'rotate-90'"})
+						}
+					</button>
+				} else {
+					<button hx-post={ "/navbar-group/toggle?id=" + group.Id }>
+						<i class={ group.Icon }></i>
+						<span>{ group.Label }</span>
+						if group.Open {
+							<i class="icon-chevron-down"></i>
+						} else {
+							<i class="icon-chevron-right"></i>
+						}
+					</button>
+				}
+			</div>
+			<ul x-show="open" x-collapse>
+				for _, item := range group.Items {
+					<li>
+						<a href={ item.Href }>
+							<i class={ item.Icon }></i>
+							<span>{ item.Label }</span>
+						</a>
+					</li>
+				}
+			</ul>
 		</div>
 	</li>
 }

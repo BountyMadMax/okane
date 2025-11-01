@@ -27,5 +27,4 @@ func addStaticFiles(e *echo.Echo) {
 
 	e.File("assets/css/inter.css", "node_modules/@fontsource-variable/inter/index.css")
 	e.Static("assets/font/inter/", "node_modules/@fontsource-variable/inter/files/")
-	e.Static("assets/icons/", "node_modules/lucide-static/font/")
 }
